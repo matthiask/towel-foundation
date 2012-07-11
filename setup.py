@@ -6,13 +6,13 @@ import setuplib
 
 packages, package_data = setuplib.find_packages('towel_bootstrap')
 
-setup(name='towel_bootstrap',
+setup(name='towel-bootstrap',
     version=__import__('towel_bootstrap').__version__,
     description='Keeping you DRY since 2010',
     long_description=open(os.path.join(os.path.dirname(__file__), 'README')).read().decode('utf-8'),
     author='Matthias Kestenholz',
     author_email='mk@feinheit.ch',
-    url='http://github.com/matthiask/towel_bootstrap/',
+    url='http://github.com/matthiask/towel-bootstrap/',
     license='BSD License',
     platforms=['OS Independent'],
     packages=packages,
