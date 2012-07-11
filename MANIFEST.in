@@ -1,0 +1,7 @@
+include LICENSE
+include MANIFEST.in
+include README
+include setuplib.py
+recursive-include towel_bootstrap/static *
+recursive-include towel_bootstrap/locale *
+recursive-include towel_bootstrap/templates *

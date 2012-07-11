@@ -1,0 +1,28 @@
+{% extends base_template|default:"base.html" %}
+
+{% load i18n modelview_detail %}
+
+{% block title %}{{ object }} - {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="btn-group pull-right">
+  <a href="{{ object.urls.edit }}" class="btn">{% trans "edit" %}</a>
+  <button class="btn dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="{{ object.urls.delete }}">{% trans "delete" %}</a></li>
+  </ul>
+</div>
+
+<h2>{{ object }}</h2>
+
+<table>
+{% for title, value in object|model_details %}
+    <tr class="{% cycle "odd" "even" %}">
+        <th>{{ title|capfirst }}</th>
+        <td>{{ value }}</td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}

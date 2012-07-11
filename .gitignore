@@ -1,0 +1,11 @@
+*.pyc
+*~
+.*.swp
+\#*#
+/docs/_build
+/django
+/example
+/dist
+/build
+/towel_bootstrap.egg-info
+/MANIFEST
