@@ -5,7 +5,7 @@
   {% load bootstrap_tags %}
   <label for="{{ item.auto_id }}" class="control-label">{{ item.label }}</label>
   <div class="controls">
-    <div class="input-append date datepicker {{ additional_classes|default_if_none:"" }}" data-date="{% now "SHORT_DATE_FORMAT" %}" data-date-format="{% date_format %}">
+    <div class="input-append date datepicker {{ additional_classes|default_if_none:"" }}" data-date-format="{% date_format %}">
       {{ item }}<span class="add-on"><i class="icon-th"></i></span>
     </div>
   </div>
