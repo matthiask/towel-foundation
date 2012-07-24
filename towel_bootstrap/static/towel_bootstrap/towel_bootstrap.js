@@ -1,7 +1,7 @@
 ;
 /* onReady */
 (function($) {
-    var onReady = onReady || [];
+    var onReady = window.onReady || [];
     for (var i=0, l=onReady.length; i<l; i++) onReady[i].apply(null, [$]);
 })(jQuery);
 
