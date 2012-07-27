@@ -2,15 +2,19 @@
 
 {% load i18n towel_form_tags verbose_name_tags %}
 
-{% block title %}{{ title }} - {{ block.super }}{% endblock %}
+{% block title %}{{ title }}{% if block.super %} - {{ block.super }}{% endif %}{% endblock %}
 
-{% block content %}
-<h2>
+{% block page-header %}
+<div class="page-header">
+  <h1>
     {% if object %}<a href="{{ object.get_absolute_url }}">{{ title }}: {{ object }}</a>
     {% else %}{{ title }}
     {% endif %}
-</h2>
+  </h1>
+</div>
+{% endblock %}
 
+{% block content %}
 <form method="post" action="{{ request.get_full_path|default:"." }}" enctype="multipart/form-data" class="form-horizontal well">
 {% csrf_token %}
 {% form_errors form formsets %}
