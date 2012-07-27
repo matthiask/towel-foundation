@@ -6,7 +6,7 @@
   <label for="{{ item.auto_id }}" class="control-label">{{ item.label }}</label>
   <div class="controls">
     <div class="input-append date datepicker {{ additional_classes|default_if_none:"" }}" data-date-format="{% date_format %}">
-      {{ item }}<span class="add-on"><i class="icon-th"></i></span>
+      {{ item }}<span class="add-on"><i class="icon-calendar"></i></span>
     </div>
   </div>
   {% elif is_checkbox %}
