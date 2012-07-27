@@ -71,6 +71,7 @@
     </div>
 
     <div class="container-fluid">
+      {% block main %}
       <div class="row-fluid">
         <div class="span3" id="sidebar">
           {% block search %}
@@ -127,6 +128,7 @@
           {% block content %}{% endblock %}
         </div><!--/span-->
       </div><!--/row-->
+      {% endblock main %}
 
       <hr>
 
