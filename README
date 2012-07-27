@@ -2,5 +2,11 @@
 ``towel_bootstrap`` -- making it easy to use Towel with Twitter Bootstrap
 =========================================================================
 
+.. note::
+
+    You have to add ``towel_bootstrap`` to ``INSTALLED_APPS``, preferably
+    before ``django.contrib.admin`` because otherwise the bootstrapified
+    login, logout and password templates will not be picked up.
+
 * Towel on github: https://github.com/matthiask/towel/
 * Documentation: http://www.feinheit.ch/media/labs/towel/
