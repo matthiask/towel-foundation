@@ -6,11 +6,7 @@
 {% block main %}
 <div class="row-fluid">
   <div class="span12">
-    {% block messages %}
-      {% for message in messages %}
-      <div class="alert alert-{{ message.tags }}">{{ message|safe }}</div>
-      {% endfor %}
-    {% endblock messages %}
+    {% block messages %}{% include "towel_bootstrap/_messages.html" %}{% endblock %}
     {% block page-header %}
       {% if verbose_name_plural %}
         <div class="page-header"><h1>

@@ -1,10 +1,4 @@
-{% block messages %}
-  {% for message in messages %}
-  <div class="alert alert-{{ message.tags }} fade in">
-    <a class="close" data-dismiss="alert" href="#">&times;</a>
-    {{ message|safe }}</div>
-  {% endfor %}
-{% endblock messages %}
+{% block messages %}{% include "towel_bootstrap/_messages.html" %}{% endblock %}
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal">&times;</button>
   <h3>{% block title %}{% endblock %}</h3>
