@@ -39,6 +39,9 @@
         $elem.find('form').each(function() {
             var $form = $(this);
             $form.on('submit', function() {
+                // TODO detect enctype=multipart/form-data and use
+                // ajaxSubmit (from jquery.form.js) instead. Additionally,
+                // progress code from keetab_cp.
                 $.post(this.action, $form.serialize(), function(data) {
                     if (typeof(data) == 'string') {
                         $elem.html(data);
