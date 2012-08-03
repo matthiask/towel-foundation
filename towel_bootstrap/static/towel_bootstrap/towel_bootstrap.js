@@ -10,7 +10,7 @@ $.fn.flash = function() {
 };
 
 $.fn.autogrow = function() {
-    return this.each(function() {
+    return this.not('.hasAutogrow').addClass('hasAutogrow').each(function() {
         var $this = $(this);
         $this.on('keyup', function() {
             $this.height($this.prop('scrollHeight'));
