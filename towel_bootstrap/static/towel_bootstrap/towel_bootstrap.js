@@ -1,4 +1,24 @@
 ;
+/* various plugins */
+$.fn.flash = function() {
+    return this.each(function() {
+        var $this = $(this),
+                opacity = $this.css('opacity');
+
+        $this.css('opacity', 0.3).animate({opacity: opacity});
+    });
+};
+
+$.fn.autogrow = function() {
+    return this.each(function() {
+        var $this = $(this);
+        $this.on('keyup', function() {
+            $this.height($this.prop('scrollHeight'));
+        }).trigger('keyup');
+    });
+};
+
+
 /* onReady */
 (function($) {
     var onReady = window.onReady || [];
@@ -13,6 +33,8 @@
             $('select', elem || document).chosen();
         if ($.fn.datepicker)
             $('.datepicker', elem || document).datepicker();
+
+        $('textarea.autogrow', elem || document).autogrow();
     };
 
     initForms();
