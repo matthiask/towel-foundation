@@ -28,14 +28,23 @@ $.fn.autogrow = function() {
 
 /* init forms */
 (function($) {
-    var initForms = function(elem) {
-        if ($.fn.chosen)
-            $('select', elem || document).chosen();
-        if ($.fn.datepicker)
-            $('.datepicker', elem || document).datepicker();
+    if (!window.onForm) window.onForm = [];
 
-        $('textarea.autogrow', elem || document).autogrow();
-    };
+    var onForm = window.onForm,
+        initForms = function(elem) {
+            var elem = $(elem || document);
+            for (var i=0, len=onForm.length; i<len; ++i)
+                onForm[i].apply(null, [elem, $]);
+        };
+
+    onForm.push(function(elem, $) {
+        if ($.fn.chosen)
+            elem.find('select').chosen();
+        if ($.fn.datepicker)
+            elem.find('.datepicker').datepicker();
+
+        elem.find('textarea.autogrow').autogrow();
+    });
 
     initForms();
 
