@@ -70,7 +70,7 @@ $.fn.autogrow = function() {
                         initModal.call($elem.get(0));
                     } else {
                         $.each(data, function(key, value) {
-                            $('#' + key).html(value);
+                            initForms($('#' + key).html(value).flash());
                             $elem.modal('hide');
                         });
                     }
