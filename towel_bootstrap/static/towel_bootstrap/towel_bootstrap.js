@@ -68,12 +68,8 @@ $.fn.autogrow = function() {
         }
 
         $elem.find('form').each(function() {
-            var $form = $(this);
-            $form.on('submit', function() {
-                // TODO detect enctype=multipart/form-data and use
-                // ajaxSubmit (from jquery.form.js) instead. Additionally,
-                // progress code from keetab_cp.
-                $.post(this.action, $form.serialize(), function(data) {
+            var $form = $(this),
+                handleResponse = function(data) {
                     if (typeof(data) == 'string') {
                         $elem.html(data);
                         initModal.call($elem.get(0));
@@ -83,7 +79,30 @@ $.fn.autogrow = function() {
                             $elem.modal('hide');
                         });
                     }
-                });
+                };
+
+            $form.on('submit', function() {
+                // TODO detect enctype=multipart/form-data and use
+                // ajaxSubmit (from jquery.form.js) instead. Additionally,
+                // progress code from keetab_cp.
+
+                if ($.fn.ajaxSubmit) {
+                    // jquery.form.js is available, XHR file uploads will
+                    // work too
+                    var $bar = $elem.find('.bar');
+
+                    $(this).ajaxSubmit({
+                        uploadProgress: function(evt, pos, total, percComplete) {
+                            $bar.width(percComplete + '%');
+                        },
+                        beforeSubmit: function() {
+                            $bar.width('0%');
+                        },
+                        success: handleResponse
+                    });
+                } else {
+                    $.post(this.action, $form.serialize(), handleResponse);
+                }
                 return false;
             });
         });
