@@ -2,7 +2,7 @@
 
 {% load i18n modelview_list towel_batch_tags towel_form_tags verbose_name_tags %}
 
-{% block title %}{{ verbose_name_plural }} - {{ block.super }}{% endblock %}
+{% block title %}{{ verbose_name_plural|capfirst }} - {{ block.super }}{% endblock %}
 
 {% block content %}
 

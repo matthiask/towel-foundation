@@ -104,7 +104,7 @@
           {% block page-header %}
             {% if verbose_name_plural %}
               <div class="page-header"><h1>
-                {{ verbose_name_plural }}
+                {{ verbose_name_plural|capfirst }}
                 {% if paginator %}
                 <small>
                   {{ page.start_index }} - {{ page.end_index }}
