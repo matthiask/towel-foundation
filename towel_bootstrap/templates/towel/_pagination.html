@@ -1,4 +1,5 @@
 {% load i18n modelview_list %}
+{% if paginator.num_pages > 1 %}
 <div class="pagination">
   {% with context.request.GET|querystring as querystring %}
   <ul>
@@ -21,4 +22,4 @@
   <span>{{ page.start_index }} - {{ page.end_index }} / {{ paginator.count }}</span>
   -->
 </div>
-
+{% endif %}
