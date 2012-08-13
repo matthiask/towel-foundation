@@ -75,6 +75,10 @@ $.fn.autogrow = function() {
                         initModal.call($elem.get(0));
                     } else {
                         $.each(data, function(key, value) {
+                            if (key == '!redirect') {
+                                window.location.href = value;
+                                return false;
+                            }
                             initForms($('#' + key).html(value).flash());
                         });
                         $elem.modal('hide');
