@@ -76,8 +76,8 @@ $.fn.autogrow = function() {
                     } else {
                         $.each(data, function(key, value) {
                             initForms($('#' + key).html(value).flash());
-                            $elem.modal('hide');
                         });
+                        $elem.modal('hide');
                     }
                 };
 
