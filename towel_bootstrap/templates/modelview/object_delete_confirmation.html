@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-<form method="post" action="{{ request.get_full_path|default:"." }}" class="well">
+<form method="post" action="{{ request.get_full_path|default:"." }}">
 
   <p>{% blocktrans %}Do you really want to delete {{ object }}?{% endblocktrans %}</p>
 
