@@ -77,16 +77,9 @@
       {% block main %}
       <div class="row-fluid">
         <div class="span3" id="sidebar">
-          {% block search %}
-            {% if search_form %}
-              <div class="well">
-                {% include "towel_bootstrap/_searchform.html" %}
-              </div>
-            {% endif %}
-          {% endblock %}
           {% block sidebar %}
             {% if verbose_name and add_url and adding_allowed %}
-            <div class="well sidebar-nav">
+            <div class="sidebar-nav well">
               <ul class="nav nav-list">
                 <li class="nav-header">{{ verbose_name_plural }}</li>
 
@@ -94,6 +87,19 @@
                 <li><a href="{{ add_url }}" class="add">
                   {% blocktrans %}New {{ verbose_name }}{% endblocktrans %}</a></li>
                 {% endmark_current %}
+
+                {% block search %}
+                  {% if search_form %}
+                    <li class="nav-header">
+                      {% if search_form.searching %}
+                        <a href="?clear=1" class="pull-right">
+                          <i class="icon-remove"></i> </a>
+                      {% endif %}
+                      {% trans "Search" %}</li>
+                    </li>
+                    <li>{% include "towel_bootstrap/_searchform.html" %}</li>
+                  {% endif %}
+                {% endblock %}
               </ul>
             </div>
             {% endif %}
