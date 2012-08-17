@@ -15,7 +15,8 @@
 {% endblock %}
 
 {% block content %}
-<form method="post" action="{{ request.get_full_path|default:"." }}" enctype="multipart/form-data" class="form-horizontal">
+<form method="post" action="{{ request.get_full_path|default:"." }}"
+  enctype="multipart/form-data" class="form form-horizontal">
 {% csrf_token %}
 {% form_errors form formsets %}
 
