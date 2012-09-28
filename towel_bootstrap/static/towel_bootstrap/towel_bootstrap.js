@@ -99,10 +99,6 @@ if (window.gettext === undefined) {
             });
 
             $form.on('submit', function() {
-                // TODO detect enctype=multipart/form-data and use
-                // ajaxSubmit (from jquery.form.js) instead. Additionally,
-                // progress code from keetab_cp.
-
                 if ($.fn.ajaxSubmit) {
                     // jquery.form.js is available, XHR file uploads will
                     // work too
