@@ -132,6 +132,10 @@ if (window.gettext === undefined) {
             modal = $('<div id="ajax-modal" class="modal fade" />');
             modal.appendTo('body');
             modal.on('hide', function(event) {
+                if (event.target != this) {
+                    // another element triggered the hide event. Ignore it.
+                    return true;
+                }
 
                 // if the modal is locked (i.e. uploading/submission in progress)
                 if (window.modalLoad.locked) {
