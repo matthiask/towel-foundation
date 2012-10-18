@@ -81,22 +81,8 @@ if (window.gettext === undefined) {
                         $elem.html(data);
                         initModal.call($elem.get(0));
                     } else {
-                        var hide = true;
-                        $.each(data, function(key, value) {
-                            if (key == '!redirect') {
-                                window.location.href = value;
-                                return false;
-                            } else if (key == '!keep') {
-                                hide = false;
-                                return;
-                            } else if (key[0] == '!') {
-                                // unknown command, skip.
-                                return;
-                            }
-                            initForms($('#' + key).html(value).flash());
-                        });
-
-                        if (hide)
+                        updateLive(data);
+                        if (!('!keep' in data))
                             $elem.modal('hide');
                     }
                 }
