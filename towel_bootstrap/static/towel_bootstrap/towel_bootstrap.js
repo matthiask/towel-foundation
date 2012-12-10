@@ -64,14 +64,6 @@ if (window.gettext === undefined) {
         var modal = this,
             $elem = $(this);
 
-        if ($elem.outerHeight() > 500) {
-            $elem.css('marginTop', -Math.min(
-                $(window).height() / 2,
-                $elem.outerHeight() / 2));
-        } else {
-            $elem.css('marginTop', '-250px');
-        }
-
         $elem.find('form').each(function() {
             var $form = $(this),
                 handleResponse = function(data) {
