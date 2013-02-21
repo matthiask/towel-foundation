@@ -145,22 +145,26 @@
 
   {% block templates %}
   <div class="modal fade hide" id="feedback">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h3>{% trans "Feedback" %}</h3>
-    </div>
-    <div class="modal-body">
-      <form method="post" action="#" class="form-vertical">
-        <div class="control-group">
-          <div class="controls">
-            <textarea></textarea>
-          </div>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3>{% trans "Feedback" %}</h3>
         </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <a href="#" class="btn pull-left" data-dismiss="modal">{% trans "Close" %}</a>
-      <a href="#" class="btn btn-primary">{% trans "Send" %}</a>
+        <div class="modal-body">
+          <form method="post" action="#" class="form-vertical">
+            <div class="control-group">
+              <div class="controls">
+                <textarea></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn pull-left" data-dismiss="modal">{% trans "Close" %}</a>
+          <a href="#" class="btn btn-primary">{% trans "Send" %}</a>
+        </div>
+      </div>
     </div>
   </div>
   {% endblock %}

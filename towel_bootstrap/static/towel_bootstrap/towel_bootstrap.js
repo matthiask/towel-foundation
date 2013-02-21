@@ -116,7 +116,7 @@ if (window.gettext === undefined) {
 
         if (!modal.length) {
             /* create div for holding AJAX-loaded modals, once */
-            modal = $('<div id="ajax-modal" class="modal-dialog fade" />');
+            modal = $('<div id="ajax-modal" class="modal fade" />');
             modal.appendTo('body');
             modal.on('hide', function(event) {
                 if (event.target != this) {

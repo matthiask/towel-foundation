@@ -1,10 +1,13 @@
-<div class="modal-content">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">&times;</button>
-    <h3>{% block title %}{{ modal_title }}{% endblock %}</h3>
-  </div>
-  <div class="modal-body">
-  {% block messages %}{% include "towel_bootstrap/_messages.html" %}{% endblock %}
-  {% block content %}{% endblock %}
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h3>{% block title %}{{ modal_title }}{% endblock %}</h3>
+    </div>
+    <div class="modal-body">
+    {% block messages %}{% include "towel_bootstrap/_messages.html" %}{% endblock %}
+    {% block content %}{% endblock %}
+    </div>
+    {% block footer %}{% endblock %}
   </div>
 </div>
