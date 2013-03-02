@@ -45,8 +45,14 @@ if (window.gettext === undefined) {
     onForm.push(function(elem, $) {
         if ($.fn.chosen)
             elem.find('select').chosen();
-        if ($.fn.datepicker)
-            elem.find('.datepicker').datepicker();
+        if ($.fn.datepicker) {
+            elem.find('.date').each(function() {
+                var self = $(this),
+                    input = self.find('input');
+                input.data('date-format', self.data('date-format'));
+                input.datepicker();
+            });
+        }
 
         elem.find('textarea.autogrow').autogrow();
     });
