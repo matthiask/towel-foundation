@@ -1,6 +1,6 @@
 {% extends base_template|default:"base.html" %}
 
-{% load i18n %}
+{% load i18n towel_form_tags %}
 
 {% block title %}{{ title }} {{ object }} - {{ block.super }}{% endblock %}
 
@@ -28,6 +28,9 @@
   {% endif %}
 
   {% csrf_token %}
+  {% form_errors form %}
+  {% form_warnings form %}
+
   <button type="submit" class="btn btn-danger">{% trans "delete"|capfirst %}</button>
   <a href="{{ object.get_absolute_url }}" class="btn pull-right">
       {% trans "cancel"|capfirst %}</a>
