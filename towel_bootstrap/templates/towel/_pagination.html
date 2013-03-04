@@ -2,7 +2,7 @@
 {% if paginator.num_pages > 1 %}
 <div class="pagination">
   {% with context.request.GET|querystring as querystring %}
-  <ul>
+  <ul class="nav nav-pills">
   {% if page.has_previous %}
     <li><a href="?{{ querystring }}&page={{ page.previous_page_number }}">&laquo;</a></li>
   {% endif %}
