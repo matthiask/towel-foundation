@@ -30,6 +30,7 @@
   {% csrf_token %}
   {% form_errors form %}
   {% form_warnings form %}
+  {% form_items form %}
 
   <button type="submit" class="btn btn-danger">{% trans "delete"|capfirst %}</button>
   <a href="{{ object.get_absolute_url }}" class="btn pull-right">
