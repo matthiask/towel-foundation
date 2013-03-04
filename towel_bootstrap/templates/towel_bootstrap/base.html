@@ -36,33 +36,32 @@
   <body>
   {% block body %}
     <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
           {% block navigation %}
-          <a class="brand" id="logo" href="/">towel bootstrap</a>
+          <a class="navbar-brand" id="logo" href="/">towel bootstrap</a>
           <div class="btn-group pull-right">
             <a href="{{ user.get_absolute_url }}" class="btn">
-              <i class="icon-user"></i> {{ user }}</a>
+              <i class="glyphicon glyphicon-user"></i> {{ user }}</a>
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li><a href="#feedback" data-toggle="modal">
-                <i class="icon-comment"></i>
+                <i class="glyphicon glyphicon-comment"></i>
                 {% trans "Feedback" %}</a></li>
               <li class="divider"></li>
               <li><a href="{% url "logout" %}">
-                <i class="icon-off"></i>
+                <i class="glyphicon glyphicon-off"></i>
                 Sign Out</a></li>
             </ul>
           </div>
 
-          <div class="nav-collapse">
+          <div class="nav-collapse collapse navbar-responsive-collapse">
             <ul class="nav">
               <li {% if request.path == "/" %}class="active"{% endif %}>
                 <a href="/">Home</a></li>
@@ -70,7 +69,6 @@
           </div><!--/.nav-collapse -->
           {% endblock navigation %}
         </div>
-      </div>
     </div>
 
     <div class="container">
@@ -93,7 +91,7 @@
                     <li class="nav-header">
                       {% if search_form.searching %}
                         <a href="?clear=1" class="pull-right">
-                          <i class="icon-remove"></i> </a>
+                          <i class="glyphicon glyphicon-remove"></i> </a>
                       {% endif %}
                       {% trans "Search" %}</li>
                     </li>
