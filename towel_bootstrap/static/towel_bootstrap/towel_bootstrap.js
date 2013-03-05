@@ -61,6 +61,11 @@ if (window.gettext === undefined) {
 
     /* inject function into the global namespace */
     if (!window.initForms) window.initForms = initForms;
+
+    $(document.body).on('updateLive', function() {
+        $(this).flash();
+        initForms(this);
+    });
 })(jQuery);
 
 
