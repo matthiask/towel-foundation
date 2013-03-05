@@ -3,7 +3,7 @@
 $.fn.flash = function() {
     return this.each(function() {
         var $this = $(this),
-                opacity = $this.css('opacity');
+            opacity = $this.css('opacity');
 
         $this.css('opacity', 0.3).animate({opacity: opacity});
     });
@@ -62,9 +62,10 @@ if (window.gettext === undefined) {
     /* inject function into the global namespace */
     if (!window.initForms) window.initForms = initForms;
 
-    $(document.body).on('updateLive', function() {
-        $(this).flash();
-        initForms(this);
+    $(document.body).on('updateLive', function(event, elem) {
+        event.stopPropagation();
+        elem.flash();
+        initForms(elem);
     });
 })(jQuery);
 
