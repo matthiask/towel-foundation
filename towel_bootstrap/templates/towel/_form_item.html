@@ -1,4 +1,4 @@
-<div class="control-group {{ additional_classes|default:"" }} {{ item.field.required|yesno:"required," }} {{ item.errors|yesno:"error," }} type-{{ type_class }} field-{{ item.name }}">
+<div class="control-group {{ additional_classes|default:"" }} {{ item.field.required|yesno:"required," }} {{ item.errors|yesno:"has-error," }} type-{{ type_class }} field-{{ item.name }}">
   {% if "hidden" in type_class %}
     {{ item }}
   {% elif "date" in type_class %}
