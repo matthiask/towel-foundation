@@ -6,7 +6,7 @@
 
 {% block content %}
 
-{% if batch_form %}<form id="batchform" method="post" action="{{ request.get_full_path }}" enctype="multipart/form-data">{% csrf_token %}{% endif %}
+{% if batch_form %}<form method="post" action="{{ request.get_full_path }}" enctype="multipart/form-data">{% csrf_token %}{% endif %}
 
 {% block objects %}
 <table class="table table-striped">
@@ -33,7 +33,7 @@
 
 {% if batch_form %}
   {% form_errors batch_form %}
-  <div class="box detail">
+  <div class="batchform">
     <h2>{% trans "Batch form" %}</h2>
 
     <input type="hidden" name="batchform" value="1" />
