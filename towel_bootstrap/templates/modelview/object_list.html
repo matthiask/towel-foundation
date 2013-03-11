@@ -6,7 +6,11 @@
 
 {% block content %}
 
-{% if batch_form %}<form method="post" action="{{ request.get_full_path }}" enctype="multipart/form-data">{% csrf_token %}{% endif %}
+{% if batch_form %}
+<form method="post" action="{{ request.get_full_path }}"
+    enctype="multipart/form-data">
+  {% csrf_token %}
+{% endif %}
 
 {% block objects %}
 <table class="table table-striped">
@@ -34,25 +38,15 @@
 {% if batch_form %}
   {% form_errors batch_form %}
   <div class="batchform">
-    <h2>{% trans "Batch form" %}</h2>
-
+    <h3>{% trans "Batch form" %}</h3>
     <input type="hidden" name="batchform" value="1" />
-    <table>{% for field in batch_form %}{% form_item field %}{% endfor %}</table>
-
-    {% if batch_items %}
-      {% for item in batch_items %}
-        {{ item }}
-        <br />
-      {% endfor %}
-    {% endif %}
-
+    {% form_items batch_form %}
     {% block batch_buttons %}
-    <div class="buttons">
-      <button type="submit" class="button right">{% trans "Submit" %}</button>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
     </div>
     {% endblock %}
   </div>
 </form>
 {% endif %}
-
 {% endblock %}
