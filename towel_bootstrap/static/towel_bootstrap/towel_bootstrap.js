@@ -44,7 +44,7 @@ if (window.gettext === undefined) {
 
     onForm.push(function(elem, $) {
         if ($.fn.chosen)
-            elem.find('select').chosen();
+            elem.find('select').not('[multiple]').chosen();
         if ($.fn.datepicker) {
             elem.find('.date').each(function() {
                 var self = $(this),
