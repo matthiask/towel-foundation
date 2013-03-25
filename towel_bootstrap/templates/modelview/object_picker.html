@@ -1,0 +1,42 @@
+{% extends "modal.html" %}
+
+{% load i18n towel_region %}
+
+{% block title %}
+{% blocktrans %}Select a {{ verbose_name }}{% endblocktrans %}
+{% endblock %}
+
+{% block content %}
+<form method="post" action="{{ request.get_full_path }}">
+  {% csrf_token %}
+
+  <input type="text" value="" name="query">
+  <button type="submit"><i class="glyphicon glyphicon-search"></i></button>
+</form>
+<div class="picker-panel">
+  {% region "picker-panel" fields="object_list" %}
+  <table class="table table-striped">
+  {% for object in object_list %}
+    <tr data-pk="{{ object.pk }}" data-title="{{ object }}">
+      <th>{{ object }}</th>
+    </tr>
+  {% endfor %}
+  </table>
+  {% endregion %}
+</div>
+<script>
+$('.picker-panel').on('click', 'tr[data-pk]', function() {
+  var target = $('#{{ request.GET.field }}'),
+    elm = $(this),
+    pk = elm.data('pk'),
+    title = elm.data('title');
+
+  if (!target.find('option[value=' + pk + ']').length) {
+    target[0].options[target[0].options.length] = new Option(title, pk);
+  }
+  target.val(pk);
+  target.trigger('liszt:updated');
+  $('#ajax-modal').modal('hide');
+});
+</script>
+{% endblock %}
