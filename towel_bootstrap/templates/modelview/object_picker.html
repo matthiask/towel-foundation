@@ -22,7 +22,7 @@
   {% region "picker-panel" fields="object_list" %}
   <table class="table table-striped">
   {% for object in object_list %}
-    <tr data-pk="{{ object.pk }}" data-title="{{ object }}">
+    <tr data-value="{{ object.pk }}" data-text="{{ object }}">
       <th>{{ object }}</th>
     </tr>
   {% endfor %}
@@ -30,16 +30,16 @@
   {% endregion %}
 </div>
 <script>
-$('.picker-panel').on('click', 'tr[data-pk]', function() {
+$('.picker-panel').on('click', 'tr[data-value]', function() {
   var target = $('#{{ request.GET.field }}'),
     elm = $(this),
-    pk = elm.data('pk'),
-    title = elm.data('title');
+    value = elm.data('value'),
+    text = elm.data('text');
 
-  if (!target.find('option[value=' + pk + ']').length) {
-    target[0].options[target[0].options.length] = new Option(title, pk);
+  if (!target.find('option[value=' + value + ']').length) {
+    target[0].options[target[0].options.length] = new Option(text, value);
   }
-  target.val(pk);
+  target.val(value);
   target.trigger('liszt:updated');
   $('#ajax-modal').modal('hide');
 });
