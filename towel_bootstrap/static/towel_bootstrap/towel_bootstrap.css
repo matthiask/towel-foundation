@@ -1,0 +1,13 @@
+.picker { background: inherit; border: none; }
+.picker-panel {
+    height: 400px;
+    overflow-y: scroll;
+    width: 100%;
+}
+.picker-panel tr {
+    cursor: pointer;
+}
+.picker-panel tr:hover td,
+.picker-panel tr:hover th {
+    background-color: #ffe52f !important;
+}
