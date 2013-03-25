@@ -10,8 +10,13 @@
 <form method="post" action="{{ request.get_full_path }}">
   {% csrf_token %}
 
-  <input type="text" value="" name="query">
-  <button type="submit"><i class="glyphicon glyphicon-search"></i></button>
+  <div class="input-group">
+    <input type="text" value="" name="query">
+    <span class="input-group-addon">
+      <i class="glyphicon glyphicon-search"></i>
+    </span>
+  </div>
+  <input type="submit" style="margin-left:-4000em">
 </form>
 <div class="picker-panel">
   {% region "picker-panel" fields="object_list" %}
