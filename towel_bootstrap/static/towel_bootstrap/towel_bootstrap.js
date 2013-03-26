@@ -98,7 +98,7 @@ if (window.gettext === undefined) {
             });
 
             $form.on('submit', function() {
-                if (this.action.toLowerCase() == 'post') {
+                if (this.method.toLowerCase() == 'post') {
                     if ($.fn.ajaxSubmit) {
                         // jquery.form.js is available, XHR file uploads will
                         // work too
