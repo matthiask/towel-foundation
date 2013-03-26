@@ -7,9 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<form method="post" action="{{ request.get_full_path }}">
-  {% csrf_token %}
-
+<form method="get" action="{{ request.get_full_path }}">
   <div class="input-group">
     <input type="text" value="" name="query">
     <span class="input-group-addon">

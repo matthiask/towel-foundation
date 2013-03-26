@@ -10,10 +10,11 @@ class PickerModelView(ModelView):
     def picker(self, request):
         queryset = self.get_query_set(request)
         regions = None
+        query = request.GET.get('query')
 
-        if request.method == 'POST':
+        if query is not None:
             queryset = safe_queryset_and(queryset,
-                self.model.objects._search(request.POST.get('query')))
+                self.model.objects._search(query))
             regions = {}
 
         response = self.render(request,
@@ -23,7 +24,7 @@ class PickerModelView(ModelView):
                 'regions': regions,
                 }))
 
-        if request.method == 'POST':
+        if query is not None:
             data = changed_regions(regions, ['object_list'])
             data['!keep'] = True  # Keep modal open
             return HttpResponse(json.dumps(data),

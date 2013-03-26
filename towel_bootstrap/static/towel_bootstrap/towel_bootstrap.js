@@ -93,27 +93,31 @@ if (window.gettext === undefined) {
 
             // set modal to locked: navigating away will be prevented
             // and also closing the modal will prompt the user
-            $form.on('change', function(event) {
+            $form.filter('[method="post"]').on('change', function(event) {
                 window.modalLoad.locked = true;
             });
 
             $form.on('submit', function() {
-                if ($.fn.ajaxSubmit) {
-                    // jquery.form.js is available, XHR file uploads will
-                    // work too
-                    var $bar = $elem.find('.progress-bar');
+                if (this.action.toLowerCase() == 'post') {
+                    if ($.fn.ajaxSubmit) {
+                        // jquery.form.js is available, XHR file uploads will
+                        // work too
+                        var $bar = $elem.find('.progress-bar');
 
-                    $(this).ajaxSubmit({
-                        uploadProgress: function(evt, pos, total, percComplete) {
-                            $bar.width(percComplete + '%');
-                        },
-                        beforeSubmit: function() {
-                            $bar.width('0%');
-                        },
-                        success: handleResponse
-                    });
+                        $(this).ajaxSubmit({
+                            uploadProgress: function(evt, pos, total, percComplete) {
+                                $bar.width(percComplete + '%');
+                            },
+                            beforeSubmit: function() {
+                                $bar.width('0%');
+                            },
+                            success: handleResponse
+                        });
+                    } else {
+                        $.post(this.action, $form.serialize(), handleResponse);
+                    }
                 } else {
-                    $.post(this.action, $form.serialize(), handleResponse);
+                    $.get(this.action, $form.serialize(), handleResponse);
                 }
                 return false;
             });
