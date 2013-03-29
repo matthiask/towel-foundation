@@ -34,11 +34,17 @@ $('.picker-panel').on('click', 'tr[data-value]', function() {
     value = elm.data('value'),
     text = elm.data('text');
 
-  if (!target.find('option[value=' + value + ']').length) {
-    target[0].options[target[0].options.length] = new Option(text, value);
+  if (target.hasClass('chzn-done')) {
+    if (!target.find('option[value=' + value + ']').length) {
+      target[0].options[target[0].options.length] = new Option(text, value);
+    }
+    target.val(value);
+    target.trigger('liszt:updated');
+  } else if (target.is('input[type="hidden"]')) {
+    target.val(value);
+    target.trigger('change');
   }
-  target.val(value);
-  target.trigger('liszt:updated');
+
   $('#ajax-modal').modal('hide');
 });
 </script>
