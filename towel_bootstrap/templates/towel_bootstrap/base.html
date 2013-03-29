@@ -74,7 +74,7 @@
     <div class="container">
       {% block main %}
       <div class="row">
-        <div class="span3" id="sidebar">
+        <div class="col-span-3" id="sidebar">
           {% block sidebar %}
             {% if verbose_name and add_url and adding_allowed %}
             <div class="sidebar-nav well">
@@ -103,7 +103,7 @@
             {% endif %}
           {% endblock %}
         </div><!--/span-->
-        <div class="span9">
+        <div class="col-span-9">
           {% block messages %}{% include "towel_bootstrap/_messages.html" %}{% endblock %}
           {% block page-header %}
             {% if verbose_name_plural %}
