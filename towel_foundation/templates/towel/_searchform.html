@@ -1,0 +1,19 @@
+{% load i18n towel_form_tags %}
+
+<form id="filterform" method="get" action="{{ list_url|default:"." }}" class="form-search {{ search_form.searching }}">
+  {# <a href="?clear=1" class="searching">reset</a> #}
+  <input type="hidden" name="s" value="1" />
+  {% form_item_plain search_form.query %}
+  {% for field in search_form.fields_iterator %}
+    {% if field.is_hidden %}
+      {{ field }}
+    {% else %}
+      {% form_item field %}
+    {% endif %}
+  {% endfor %}
+  <button type="submit" class="button">{% trans "Search" %}</button>
+</form>
+<style>
+  #filterform { margin-top: 7px; }
+  #id_query { width: 156px; }
+</style>

@@ -2,6 +2,6 @@ include LICENSE
 include MANIFEST.in
 include README.rst
 include setuplib.py
-recursive-include towel_bootstrap/static *
-recursive-include towel_bootstrap/locale *
-recursive-include towel_bootstrap/templates *
+recursive-include towel_foundation/static *
+recursive-include towel_foundation/locale *
+recursive-include towel_foundation/templates *

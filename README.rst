@@ -1,11 +1,11 @@
-=========================================================================
-``towel_bootstrap`` -- making it easy to use Towel with Twitter Bootstrap
-=========================================================================
+========================================================================
+``towel_foundation`` -- making it easy to use Towel with Zurb Foundation
+========================================================================
 
 .. note::
 
-    You have to add ``towel_bootstrap`` to ``INSTALLED_APPS``, preferably
-    before ``django.contrib.admin`` because otherwise the bootstrapified
+    You have to add ``towel_foundation`` to ``INSTALLED_APPS``, preferably
+    before ``django.contrib.admin`` because otherwise the foundationified
     login, logout and password templates will not be picked up.
 
 
@@ -15,7 +15,7 @@ Included goodies
 Base templates
 --------------
 
-* ``towel_bootstrap/base.html``:
+* ``base.html``:
 
   Base template for everything. CSS is at the top, Javascript at the bottom.
   Defines two Javascript arrays you might want to be aware of:
@@ -29,23 +29,9 @@ Base templates
     jQuery object wrapping either ``document`` or some subset of the DOM
     and the jQuery instance.
 
-* ``towel_bootstrap/full.html``:
-
-  Template for full-width pages.
-
-* ``towel_bootstrap/modal.html``:
+* ``towel/modal.html``:
 
   Template for AJAX-loaded modals.
-
-* ``towel_bootstrap/plain.html``:
-
-  Template covering a smaller width, most useful for login/logout pages and
-  such. Empties the main navigation.
-
-All base templates except for ``towel_bootstrap/base.html`` extend
-``base.html``. This means that if you provide your own ``base.html`` which only
-overrides the bare minimum of regions, you can use all other templates right
-away.
 
 The following blocks are available by default:
 
@@ -70,15 +56,15 @@ The following blocks are available by default:
 ModelView templates
 -------------------
 
-``towel_bootstrap`` comes with a selection of templates most useful with
+``towel_foundation`` comes with a selection of templates most useful with
 ModelView. Have a look at the files in
-``towel_bootstrap/templates/modelview/``.
+``towel_foundation/templates/modelview/``.
 
 
 Towel templates
 ---------------
 
-``towel_bootstrap`` overrides the styles of form items, form errors and
+``towel_foundation`` overrides the styles of form items, form errors and
 warnings, of ordering links in the list pages and of the pagination.
 
 
@@ -117,7 +103,7 @@ Javascript helpers
   ``textarea.autogrow``.
 * ``initForms([elem])``: Runs all handlers in ``onForm``. Defaults to handling
   everything inside ``document`` if no object is passed.
-* ``modalLoad(url)``: Loads a bootstrap modal from a remote URL. This is
+* ``modalLoad(url)``: Loads a foundation modal from a remote URL. This is
   automatically activated for all elements matching
   ``a[data-toggle=ajaxmodal]``.
 * All AJAX requests are patched to work with Django's CSRF protection.
@@ -128,7 +114,3 @@ Third-party libraries
 
 * `jQuery <http://jquery.com>`_.
 * `Harvest chosen <http://harvesthq.github.com/chosen/>`_.
-* `Bootstrap datepicker <https://github.com/eternicode/bootstrap-datepicker/>`_.
-
-* Bootstrap itself is NOT included. The templates expect to find all of
-  bootstrap at ``{{ STATIC_URL }}bootstrap/``.

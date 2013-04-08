@@ -1,0 +1,59 @@
+{% extends base_template|default:"base.html" %}
+
+{% load i18n towel_form_tags verbose_name_tags %}
+
+{% block title %}{{ title }}{% if block.super %} - {{ block.super }}{% endif %}{% endblock %}
+
+{% block page-header %}
+<div class="page-header">
+  <h1>
+    {% if object %}<a href="{{ object.get_absolute_url }}">{{ title }}: {{ object }}</a>
+    {% else %}{{ title }}
+    {% endif %}
+  </h1>
+</div>
+{% endblock %}
+
+{% block content %}
+<form method="post" action="{{ request.get_full_path|default:"." }}"
+  enctype="multipart/form-data" class="form form-horizontal">
+{% csrf_token %}
+{% form_errors form formsets %}
+
+<fieldset>
+  {% for field in form %}
+    {% if field.is_hidden %}{{ field }}
+    {% else %}{% form_item field %}
+    {% endif %}
+  {% endfor %}
+</fieldset>
+
+{% for key, formset in formsets.items %}
+<fieldset>
+    <legend>{{ formset|verbose_name_plural }}</legend>
+    {{ formset.management_form }}
+    {% dynamic_formset formset key %}
+        <div id="{{ form_id }}" class="{% if empty %}empty{% endif %}">
+          {% for field in form %}
+            {% if field.is_hidden %}{{ field }}
+            {% else %}{% form_item field %}
+            {% endif %}
+          {% endfor %}
+        </div>
+    {% enddynamic_formset %}
+    <button type="button" class="button"
+            onclick="return towel_add_subform('{{ key }}')">
+        {{ formset|verbose_name }}
+    </button>
+</fieldset>
+{% endfor %}
+
+<div class="form-actions">
+    <input class="button button-primary" type="submit" name="_save" value="{% trans "save"|capfirst %}">
+    <input class="button" type="submit" name="_continue" value="{% trans "Save and continue editing" %}">
+
+    <a href="../" class="button button-warning right">{% trans "cancel"|capfirst %}</a>
+</div>
+
+</form>
+{% endblock %}

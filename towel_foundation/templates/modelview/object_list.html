@@ -1,0 +1,52 @@
+{% extends base_template|default:"base.html" %}
+
+{% load i18n modelview_list towel_batch_tags towel_form_tags verbose_name_tags %}
+
+{% block title %}{{ verbose_name_plural|capfirst }} - {{ block.super }}{% endblock %}
+
+{% block content %}
+
+{% if batch_form %}
+<form method="post" action="{{ request.get_full_path }}"
+    enctype="multipart/form-data">
+  {% csrf_token %}
+{% endif %}
+
+{% block objects %}
+<table class="table table-striped">
+  {% if batch_form %}
+    <thead>
+      <tr>
+        <td><input class="batch" type="checkbox"></td>
+        <th></th>
+      </tr>
+    </thead>
+  {% endif %}
+  <tbody>
+  {% for object in object_list %}
+    <tr>
+      {% if batch_form %}<td>{% batch_checkbox batch_form object.id %}</td>{% endif %}
+      <th><a href="{{ object.get_absolute_url }}">{{ object }}</a></th>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+
+{% if paginator %}{% pagination page paginator "bottom" %}{% endif %}
+
+{% if batch_form %}
+  {% form_errors batch_form %}
+  <div class="batchform">
+    <h3>{% trans "Batch form" %}</h3>
+    <input type="hidden" name="batchform" value="1" />
+    {% form_items batch_form %}
+    {% block batch_buttons %}
+    <div class="form-actions">
+      <button type="submit" class="button button-primary">{% trans "Submit" %}</button>
+    </div>
+    {% endblock %}
+  </div>
+</form>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% if "hidden" in type_class %}
+  {{ item }}
+{% elif "date" in type_class %}
+  {% load foundation_tags %}
+  <span class="input-append date datepicker {{ additional_classes|default_if_none:"" }} {% if item.field.required %}required {% endif %}{% if item.errors %}has-error {% endif %} {{ type_class }}" data-date-format="{% date_format %}">
+    {{ item }}<span class="add-on"><i class="foundicon-calendar"></i></span>
+  </span>
+{% else %}
+  <span class="{{ additional_classes|default_if_none:"" }} {% if item.field.required %}required {% endif %}{% if item.errors %}has-error {% endif %} {{ type_class }}">
+    {{ item }}
+  </span>
+{% endif %}

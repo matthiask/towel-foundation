@@ -1,0 +1,6 @@
+{% for message in messages %}
+<div data-alert class="alert-box {{ message.tags }}">
+  {{ message|safe }}
+  <a class="close" href="#">&times;</a>
+</div>
+{% endfor %}
