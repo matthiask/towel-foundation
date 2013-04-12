@@ -5,19 +5,18 @@
 
 {% block title %}{% trans "Welcome!" %} - {{ block.super }}{% endblock %}
 
-{% block page-header %}
-  <div class="page-header">
+{% block main %}
+<div class="row">
+  <div class="large-6 large-centered columns">
     <h1>{% trans "Welcome!" %}</h1>
+    {% include "towel/_messages.html" %}
+    <form method="post" action=".">
+      {% csrf_token %}
+      {% form_errors form %}
+      {% for field in form %}{% form_item field %}{% endfor %}
+
+      <button type="submit" class="button">{% trans "Sign in" %}</button>
+    </form>
   </div>
-{% endblock %}
-
-{% block content %}
-<form method="post" action=".">
-  {% csrf_token %}
-  {% form_errors form %}
-  {% for field in form %}{% form_item field %}{% endfor %}
-
-  <button type="submit" class="button button-primary">
-    {% trans "Sign in" %}</button>
-</form>
+</div>
 {% endblock %}

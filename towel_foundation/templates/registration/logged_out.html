@@ -3,17 +3,15 @@
 {% load i18n %}
 {% load url from future %}
 
-{% block page-header %}
-  <div class="page-header">
+{% block main %}
+<div class="row">
+  <div class="large-6 large-centered columns">
     <h1>{% trans "Signed out" %}</h1>
+    {% include "towel/_messages.html" %}
+    <p>{% trans "Thanks for spending your time with us!" %}</p>
+
+    <br>
+    <a href="{% url 'login' %}" class="button">{% trans "Sign in" %}</a>
   </div>
-{% endblock %}
-
-{% block content %}
-  <p>{% trans "Thanks for spending your time with us!" %}</p>
-
-  <br>
-  <a href="{% url "login" %}" class="button button-primary">
-    {% trans "Sign in" %}
-  </a>
+</div>
 {% endblock %}
