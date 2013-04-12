@@ -123,11 +123,14 @@ if (window.gettext === undefined) {
                     }
                     return false;
                 });
+
+                // focus the first form element
+                (function(form) {
+                    setTimeout(function() {
+                        $('input:visible, textarea', form).first().focus();
+                    }, 150);
+                })(this);
             });
-            setTimeout(function() {
-                $elem.find('form').find('input:visible, textarea').first().focus();
-                initForms();
-            }, 100);
         },
         modalLoad = function(url) {
             var modal = $('div.reveal-modal');
