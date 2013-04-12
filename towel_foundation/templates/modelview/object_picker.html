@@ -45,7 +45,7 @@ $('.picker-panel').on('click', 'tr[data-value]', function() {
     target.trigger('change');
   }
 
-  $('#ajax-modal').modal('hide');
+  $('.reveal-modal').foundation('reveal', 'close');
 });
 </script>
 {% endblock %}
