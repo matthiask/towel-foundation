@@ -6,7 +6,7 @@
     <label for="{{ item.auto_id }}">
       {{ item.label }}
       {% if item.field.help_text %}
-        <small>{{ item.field.help_text }}</small>
+        <span>{{ item.field.help_text }}</span>
       {% endif %}
     </label>
     <div class="row collapse date" data-date-format="{% date_format %}">
@@ -22,14 +22,14 @@
       {{ item }}
       {{ item.label }}
       {% if item.field.help_text %}
-        <small>{{ item.field.help_text }}</small>
+        <span>{{ item.field.help_text }}</span>
       {% endif %}
     </label>
   {% else %}
     <label for="{{ item.auto_id }}">
       {{ item.label }}
       {% if item.field.help_text %}
-        <small>{{ item.field.help_text }}</small>
+        <span>{{ item.field.help_text }}</span>
       {% endif %}
     </label>
     {{ item }}
