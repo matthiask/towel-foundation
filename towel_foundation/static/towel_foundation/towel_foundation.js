@@ -45,12 +45,14 @@ if (window.gettext === undefined) {
     onForm.push(function(elem, $) {
         if ($.fn.chosen)
             elem.find('select').not('.plain').chosen();
-        if ($.fn.datepicker) {
+        if ($.fn.pickadate) {
             elem.find('.date').each(function() {
                 var self = $(this),
                     input = self.find('input');
-                input.data('date-format', self.data('date-format'));
-                input.datepicker();
+
+                input.pickadate({
+                    format: self.data('date-format')
+                });
             });
         }
 
@@ -70,97 +72,96 @@ if (window.gettext === undefined) {
 })(jQuery);
 
 
-/* modals and ajaxmodal */
+/* ajax modals */
 (function($) {
     var initModal = function() {
-        var modal = this,
-            $elem = $(this);
+            var modal = this,
+                $elem = $(this);
 
-        $elem.find('form').each(function() {
-            var $form = $(this),
-                handleResponse = function(data) {
+            $elem.find('form').each(function() {
+                var $form = $(this),
+                    handleResponse = function(data) {
+                        window.modalLoad.locked = false;
+
+                        if (typeof(data) == 'string') {
+                            $elem.html(data);
+                            initModal.call($elem.get(0));
+                        } else {
+                            updateLive(data);
+                            if (!('!keep' in data))
+                                $elem.foundation('reveal', 'close');
+                        }
+                    }
+
+                // set modal to locked: navigating away will be prevented
+                // and also closing the modal will prompt the user
+                $form.filter('[method="post"]').on('change', function(event) {
+                    window.modalLoad.locked = true;
+                });
+
+                $form.on('submit', function() {
+                    if (this.method.toLowerCase() == 'post') {
+                        if ($.fn.ajaxSubmit) {
+                            // jquery.form.js is available, XHR file uploads will
+                            // work too
+                            var $bar = $elem.find('.progress-bar');
+
+                            $(this).ajaxSubmit({
+                                uploadProgress: function(evt, pos, total, percComplete) {
+                                    $bar.width(percComplete + '%');
+                                },
+                                beforeSubmit: function() {
+                                    $bar.width('0%');
+                                },
+                                success: handleResponse
+                            });
+                        } else {
+                            $.post(this.action, $form.serialize(), handleResponse);
+                        }
+                    } else {
+                        $.get(this.action, $form.serialize(), handleResponse);
+                    }
+                    return false;
+                });
+            });
+            setTimeout(function() {
+                $elem.find('form').find('input:visible, textarea').first().focus();
+                initForms();
+            }, 100);
+        },
+        modalLoad = function(url) {
+            var modal = $('div.reveal-modal');
+            if (!modal.length) {
+                /* create div for holding AJAX-loaded modals, once */
+                modal = $('<div>').addClass('reveal-modal').appendTo('body');
+                modal.on('close', function(event) {
+                    if (event.target != this) {
+                        // another element triggered the hide event. Ignore it.
+                        return true;
+                    }
+
+                    // if the modal is locked (i.e. uploading/submission in progress)
+                    if (window.modalLoad.locked) {
+                        if (!confirm(gettext('You have unsaved changes. Do you really want to throw them away?'))) {
+                            return false;
+                        }
+                    }
+
+                    // unlock the modal
                     window.modalLoad.locked = false;
+                    $('#logo').focus().blur();
+                });
+            }
 
-                    if (typeof(data) == 'string') {
-                        $elem.html(data);
-                        initModal.call($elem.get(0));
-                    } else {
-                        updateLive(data);
-                        if (!('!keep' in data))
-                            $elem.modal('hide');
-                    }
-                }
-
-            // set modal to locked: navigating away will be prevented
-            // and also closing the modal will prompt the user
-            $form.filter('[method="post"]').on('change', function(event) {
-                window.modalLoad.locked = true;
+            modal.empty().load(url, function() {
+                initModal.call(this);
+                $(this).foundation('reveal', 'open');
             });
+        };
 
-            $form.on('submit', function() {
-                if (this.method.toLowerCase() == 'post') {
-                    if ($.fn.ajaxSubmit) {
-                        // jquery.form.js is available, XHR file uploads will
-                        // work too
-                        var $bar = $elem.find('.progress-bar');
-
-                        $(this).ajaxSubmit({
-                            uploadProgress: function(evt, pos, total, percComplete) {
-                                $bar.width(percComplete + '%');
-                            },
-                            beforeSubmit: function() {
-                                $bar.width('0%');
-                            },
-                            success: handleResponse
-                        });
-                    } else {
-                        $.post(this.action, $form.serialize(), handleResponse);
-                    }
-                } else {
-                    $.get(this.action, $form.serialize(), handleResponse);
-                }
-                return false;
-            });
-        });
-        setTimeout(function() {
-            $elem.find('form').find('input:visible, textarea').first().focus();
-            initForms();
-        }, 100);
-    },
-    modalLoad = function(url) {
-        var modal = $('#ajax-modal');
-
-        if (!modal.length) {
-            /* create div for holding AJAX-loaded modals, once */
-            modal = $('<div id="ajax-modal" class="modal fade" />');
-            modal.appendTo('body');
-            modal.on('hide', function(event) {
-                if (event.target != this) {
-                    // another element triggered the hide event. Ignore it.
-                    return true;
-                }
-
-                // if the modal is locked (i.e. uploading/submission in progress)
-                if (window.modalLoad.locked) {
-                    if (!confirm(gettext('You have unsaved changes. Do you really want to throw them away?'))) {
-                        return false;
-                    }
-                }
-
-                // unlock the modal
-                window.modalLoad.locked = false;
-                $('#logo').focus().blur();
-            });
-        }
-
-        modal.empty().load(url, function() {
-            initModal.call(this);
-        }).modal();
-    };
-
-    $('body').on('click', 'a[data-toggle=ajaxmodal]', function(e) {
+    $(document.body).on('click', 'a[data-toggle="ajaxmodal"]', function(e) {
+        e.preventDefault();
         modalLoad(this.href);
-        return false;
     });
 
     // prevent navigating away without saving:
