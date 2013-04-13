@@ -62,7 +62,7 @@ if (window.gettext === undefined) {
         elem.find('textarea.autogrow').autogrow();
     });
 
-    initForms();
+    onReady.push(function() { initForms(); });
 
     /* inject function into the global namespace */
     if (!window.initForms) window.initForms = initForms;
