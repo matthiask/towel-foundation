@@ -127,6 +127,7 @@ if (window.gettext === undefined) {
                 // focus the first form element
                 (function(form) {
                     setTimeout(function() {
+                        initForms(form);
                         $('input:visible, textarea', form).first().focus();
                     }, 150);
                 })(this);
