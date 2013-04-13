@@ -48,7 +48,7 @@ if (window.gettext === undefined) {
         if ($.fn.pickadate) {
             elem.find('.date').each(function() {
                 var self = $(this),
-                    input = self.find('input');
+                    input = self.find('input.dateinput');
 
                 input.pickadate({
                     format: self.data('date-format')
