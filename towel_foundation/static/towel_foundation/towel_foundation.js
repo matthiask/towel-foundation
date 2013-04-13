@@ -1,4 +1,15 @@
 ;
+/* main initialization routine */
+$.fn.towelFoundation = function() {
+    /* onReady */
+    $(function() {
+        var onReady = window.onReady || [];
+        for (var i=0, l=onReady.length; i<l; i++) onReady[i].apply(null, [$]);
+    });
+
+    return this;
+};
+
 /* various plugins */
 $.fn.flash = function() {
     return this.each(function() {
@@ -22,14 +33,6 @@ if (window.gettext === undefined) {
         return msgid
     }
 }
-
-
-/* onReady */
-(function($) {
-    var onReady = window.onReady || [];
-    for (var i=0, l=onReady.length; i<l; i++) onReady[i].apply(null, [$]);
-})(jQuery);
-
 
 /* init forms */
 (function($) {
