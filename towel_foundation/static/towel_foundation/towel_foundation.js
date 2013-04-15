@@ -136,7 +136,7 @@ if (window.gettext === undefined) {
                 })(this);
             });
         },
-        modalLoad = function(url) {
+        modalLoad = function(url, cls) {
             var modal = $('div.reveal-modal');
             if (!modal.length) {
                 /* create div for holding AJAX-loaded modals, once */
@@ -160,15 +160,23 @@ if (window.gettext === undefined) {
                 });
             }
 
+            modal.removeClass().addClass('reveal-modal');
+            if (cls)
+                modal.addClass(cls);
+
             modal.empty().load(url, function() {
+                var $m = $(this),
+                    cls = $m.find('[data-reveal-class]').data('reveal-class');
+                if (cls)
+                    $m.addClass(cls);
                 initModal.call(this);
-                $(this).foundation('reveal', 'open');
+                $m.foundation('reveal', 'open');
             });
         };
 
     $(document.body).on('click', 'a[data-toggle="ajaxmodal"]', function(e) {
         e.preventDefault();
-        modalLoad(this.href);
+        modalLoad(this.href, $(this).data('reveal-class'));
     });
 
     // prevent navigating away without saving:
