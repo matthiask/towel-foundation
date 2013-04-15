@@ -18,7 +18,7 @@
 </form>
 {% region "picker-panel" fields="object_list" class="picker-panel" %}
   {% block objects %}
-  <table class="table table-striped">
+  <table class="table table-striped" data-reveal-class="medium">
   {% for object in object_list %}
     <tr data-value="{{ object.pk }}" data-text="{{ object }}">
       <th>{{ object }}</th>
@@ -48,5 +48,4 @@ $('.picker-panel').on('click', 'tr[data-value]', function() {
   $('.reveal-modal').foundation('reveal', 'close');
 });
 </script>
-<span data-reveal-class="medium"></span>
 {% endblock %}
