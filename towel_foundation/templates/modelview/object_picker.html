@@ -16,8 +16,8 @@
   </div>
   <input type="submit" style="margin-left:-4000em">
 </form>
-<div class="picker-panel">
-  {% region "picker-panel" fields="object_list" %}
+{% region "picker-panel" fields="object_list" class="picker-panel" %}
+  {% block objects %}
   <table class="table table-striped">
   {% for object in object_list %}
     <tr data-value="{{ object.pk }}" data-text="{{ object }}">
@@ -25,8 +25,8 @@
     </tr>
   {% endfor %}
   </table>
-  {% endregion %}
-</div>
+  {% endblock %}
+{% endregion %}
 <script>
 $('.picker-panel').on('click', 'tr[data-value]', function() {
   var target = $('#{{ request.GET.field }}'),
