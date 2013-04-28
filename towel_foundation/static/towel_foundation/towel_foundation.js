@@ -49,7 +49,7 @@ if (window.gettext === undefined) {
         if ($.fn.chosen)
             elem.find('select').not('.plain').chosen();
         if ($.fn.pickadate) {
-            elem.find('.date').each(function() {
+            elem.find('.type-date').each(function() {
                 var self = $(this),
                     input = self.find('input.dateinput');
 

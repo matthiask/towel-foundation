@@ -1,22 +1,10 @@
-<div class="{{ additional_classes|default:"" }} {{ item.field.required|yesno:"required," }} {{ item.errors|yesno:"error," }} type-{{ type_class }} field-{{ item.name }}">
+{% load foundation_tags %}
+<div
+  class="{{ additional_classes|default:'' }} {{ item.field.required|yesno:'required,' }} {{ item.errors|yesno:'error,' }} type-{{ type_class }} field-{{ item.name }}"
+  {% if 'date' in type_class %}data-date-format="{% date_format %}"{% endif %}
+  >
   {% if "hidden" in type_class %}
     {{ item }}
-  {% elif "date" in type_class %}
-    {% load foundation_tags %}
-    <label for="{{ item.auto_id }}">
-      {{ item.label }}
-      {% if item.field.help_text %}
-        <span>{{ item.field.help_text }}</span>
-      {% endif %}
-    </label>
-    <div class="row collapse date" data-date-format="{% date_format %}">
-      <div class="small-11 columns">{{ item }}</div>
-      <div class="small-1 columns">
-        <span class="postfix">
-          <i class="foundicon-calendar"></i>
-        </span>
-      </div>
-    </div>
   {% elif is_checkbox %}
     <label for="{{ item.auto_id }}" class="checkbox">
       {{ item }}
