@@ -1,4 +1,5 @@
-.picker { background: inherit; border: none; }
+.picker-widget > .picker-glass { float: right; line-height: 1.5; }
+.picker-widget > .picker-select { margin-right: 1.5em; }
 .picker-panel {
     height: 400px;
     overflow-y: scroll;

@@ -6,15 +6,16 @@ from django.utils.safestring import mark_safe
 
 
 _PICKER_TEMPLATE = u'''
-<div class="row collapse">
-    <div class="small-11 columns">%(select)s</div>
-    <div class="small-1 columns">
-        <a href="%(picker)s?field=%(field)s" class="picker"
-                data-toggle="ajaxmodal">
-            <i class="foundicon-search"></i>
-        </a>
+<div class="picker-widget">
+    <a href="%(picker)s?field=%(field)s" class="picker-glass"
+            data-toggle="ajaxmodal">
+        <i class="foundicon-search"></i>
+    </a>
+    <div class="picker-select">
+        %(select)s
     </div>
-</div>'''
+</div>
+'''
 
 
 class SelectWithPicker(forms.Select):
