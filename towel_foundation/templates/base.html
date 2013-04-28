@@ -68,12 +68,6 @@
                     {% trans "Configuration" %}</a></li>
                 {% endif %}
                 <li class="divider"></li>
-                <!--
-                  <li><a href="#feedback" data-reveal-id="feedback">
-                    <i class="foundicon-mic"></i>
-                    {% trans "Feedback" %}</a></li>
-                  <li class="divider"></li>
-                -->
                 <li><a href="{% url 'logout' %}">
                   <i class="foundicon-error"></i>
                   Sign Out</a></li>
@@ -110,7 +104,7 @@
                           <a href="{{ list_url|default:"." }}?clear=1" class="button">
                             {% trans "Reset" %}</a>
                         {% endif %}
-                        <button type="submit" class="button button-primary right">
+                        <button type="submit" class="button right">
                           {% trans "Search" %}</button>
                     </div>
                   {% endif %}
@@ -220,25 +214,6 @@
       });
     })(jQuery);
   </script>
-  <!--
-    <div id="feedback" class="reveal-modal small">
-      <h3>{% trans "Feedback" %}</h3>
-      <form method="post" action="/feedback/" class="form-vertical">
-        {% csrf_token %}
-        <div class="modal-body">
-          <div class="control-group">
-            <div class="controls">
-              <textarea name="feedback"></textarea>
-            </div>
-          </div>
-        </div>
-        <button type="submit" class="button button-primary">{% trans "Send" %}</button>
-
-        <a class="close-reveal-modal">&times;</a>
-      </form>
-    </div>
-  -->
-
   {% block js %}{% endblock %}
 </body>
 </html>

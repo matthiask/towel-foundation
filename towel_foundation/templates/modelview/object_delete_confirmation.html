@@ -32,7 +32,7 @@
   {% form_warnings form %}
   {% form_items form %}
 
-  <button type="submit" class="button button-danger">{% trans "delete"|capfirst %}</button>
+  <button type="submit" class="button alert">{% trans "delete"|capfirst %}</button>
   <a href="{{ object.get_absolute_url }}" class="button right">
       {% trans "cancel"|capfirst %}</a>
 </form>
