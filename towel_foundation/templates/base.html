@@ -150,7 +150,7 @@
     </div><!--/span-->
     <div class="large-3 columns" id="sidebar">
       {% block sidebar %}
-        {% if verbose_name and add_url and adding_allowed %}
+        {% if verbose_name and add_url and adding_allowed or view.allow_add %}
           <div class="panel">
             <ul class="side-nav">
               <li>{{ verbose_name_plural }}</li>
