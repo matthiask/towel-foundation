@@ -55,7 +55,18 @@ if (window.gettext === undefined) {
 
                 input.pickadate({
                     format: self.data('date-format')
+                    , formatSubmit: self.data('date-format')
+                    , selectYears: true
+                    , selectMonths: true
+                    , data: true
                 });
+
+                // https://github.com/amsul/pickadate.js/issues/128
+                // uhm...
+                var p = input.data('pickadate');
+                if (p.get())
+                    p.set('select', p.get(), {
+                        format: self.data('date-format'), data: true});
             });
         }
 

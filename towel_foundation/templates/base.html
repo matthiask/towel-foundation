@@ -10,7 +10,8 @@
   <title>{% block title %}myproject{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'myproject/stylesheets/app.css' %}" />
   <link href="{% static 'chosen/chosen.css' %}" rel="stylesheet">
-  <link href="{% static 'towel_foundation/pickadate/themes/pickadate.01.default.css' %}" rel="stylesheet">
+  <link href="{% static 'towel_foundation/pickadate/themes/default.css' %}" rel="stylesheet">
+  <link href="{% static 'towel_foundation/pickadate/themes/default.date.css' %}" rel="stylesheet">
   <link href="{% static 'towel_foundation/towel_foundation.css' %}" rel="stylesheet">
   <script>var onReady = [], onForm = [];</script>
 
@@ -193,7 +194,8 @@
   <script src="{% static 'towel/towel_editlive.js' %}"></script>
   <script src="{% static 'chosen/chosen.jquery.min.js' %}"></script>
   <script src="{% static 'towel_foundation/jquery.elastic.min.js' %}"></script>
-  <script src="{% static 'towel_foundation/pickadate/source/pickadate.min.js' %}"></script>
+  <script src="{% static 'towel_foundation/pickadate/picker.js' %}"></script>
+  <script src="{% static 'towel_foundation/pickadate/picker.date.js' %}"></script>
   <script src="{% static 'towel_foundation/towel_foundation.js' %}"></script>
   <script src="{% static 'myproject/myproject.js' %}"></script>
   <div id="spinner">Saving...</div>
