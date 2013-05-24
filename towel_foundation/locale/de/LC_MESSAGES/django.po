@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-28 14:12+0200\n"
+"POT-Creation-Date: 2013-05-24 08:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,68 +22,60 @@ msgstr ""
 msgid "Page not found"
 msgstr "Seite nicht gefunden"
 
-#: templates/base.html:37
+#: templates/base.html:38
 msgid "Contacts"
 msgstr "Kontakte"
 
-#: templates/base.html:39
+#: templates/base.html:40
 msgid "Projects"
 msgstr "Projekte"
 
-#: templates/base.html:41
+#: templates/base.html:42
 msgid "Billing"
 msgstr "Rechnungswesen"
 
-#: templates/base.html:43
+#: templates/base.html:44
 msgid "Team"
 msgstr "Team"
 
-#: templates/base.html:45
+#: templates/base.html:46
 msgid "Logbook"
 msgstr "Logbuch"
 
-#: templates/base.html:57
+#: templates/base.html:58
 msgid "Account"
 msgstr "Konto"
 
-#: templates/base.html:60 templates/registration/password_change_form.html:22
+#: templates/base.html:61 templates/registration/password_change_form.html:22
 #: templates/registration/password_reset_confirm.html:22
 msgid "Change my password"
 msgstr "Passwort ändern"
 
-#: templates/base.html:65
+#: templates/base.html:66
 msgid "Contact groups"
 msgstr "Kontaktgruppen"
 
-#: templates/base.html:68
+#: templates/base.html:69
 msgid "Configuration"
 msgstr "Einstellungen"
 
-#: templates/base.html:74 templates/base.html.py:225
-msgid "Feedback"
-msgstr "Feedback"
-
-#: templates/base.html:111
+#: templates/base.html:106
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: templates/base.html:114 templates/towel/_searchform.html:14
+#: templates/base.html:109 templates/towel/_searchform.html:14
 msgid "Search"
 msgstr "Suche"
 
-#: templates/base.html:139
+#: templates/base.html:134
 #, python-format
 msgid "%(total)s total"
 msgstr "%(total)s total"
 
-#: templates/base.html:166
+#: templates/base.html:161
 #, python-format
 msgid "New %(verbose_name)s"
 msgstr "%(verbose_name)s hinzufügen"
-
-#: templates/base.html:235
-msgid "Send"
-msgstr "Senden"
 
 #: templates/modelview/object_delete_confirmation.html:8
 #, python-format
@@ -225,17 +217,16 @@ msgstr "Passwort erfolgreich zurückgesetzt"
 
 #: templates/registration/password_reset_done.html:11
 msgid ""
-"We've e-mailed you instructions for setting your password to the e-mail "
+"We've emailed you instructions for setting your password to the email "
 "address you submitted. You should be receiving it shortly."
 msgstr ""
-"Wir haben Ihnen eine Anleitung an die angegebene Emailadresse gesendet, "
-"wie Sie Ihr Passwort zurücksetzen können. Sie sollten diese in Kürze "
-"erhalten."
+"Wir haben Ihnen eine Anleitung an die angegebene Emailadresse gesendet, wie "
+"Sie Ihr Passwort zurücksetzen können. Sie sollten diese in Kürze erhalten."
 
 #: templates/registration/password_reset_email.html:2
 #, python-format
 msgid ""
-"You're receiving this e-mail because you requested a password reset for your "
+"You're receiving this email because you requested a password reset for your "
 "user account at %(site_name)s."
 msgstr ""
 "Sie erhalten dieses Email, weil Sie eine Passwort-Rücksetzung für Ihren "
@@ -260,7 +251,7 @@ msgstr "Ihr %(site_name)s Team"
 
 #: templates/registration/password_reset_form.html:12
 msgid ""
-"Forgotten your password? Enter your e-mail address below, and we'll e-mail "
+"Forgotten your password? Enter your email address below, and we'll email "
 "instructions for setting a new one."
 msgstr ""
 "Passwort vergessen? Geben Sie Ihre Emailadresse an, und wir werden Ihnen "
@@ -284,7 +275,7 @@ msgstr "Passwort setzen"
 #: templates/registration/registration_sent.html:2
 #, python-format
 msgid ""
-"We sent you an e-mail to %(email)s.\n"
+"We sent you an email to %(email)s.\n"
 "Please click the contained link to finish your registration."
 msgstr ""
 "Wir haben ein Mail an %(email)s gesendet.\n"
@@ -306,3 +297,9 @@ msgstr "Formularfehler"
 #: templates/towel/_form_warnings.html:4
 msgid "Please review the following warnings:"
 msgstr "Bitte prüfen Sie die folgenden Warnungen:"
+
+#~ msgid "Feedback"
+#~ msgstr "Feedback"
+
+#~ msgid "Send"
+#~ msgstr "Senden"
