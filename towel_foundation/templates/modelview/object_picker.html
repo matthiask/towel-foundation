@@ -39,7 +39,9 @@ $('.picker-panel').on('click', 'tr[data-value]', function() {
       target[0].options[target[0].options.length] = new Option(text, value);
     }
     target.val(value);
+    target.find('option[value="' + value + '"]').prop('selected', 'selected');
     target.trigger('liszt:updated');
+    target.trigger('change');
   } else if (target.is('input[type="hidden"]')) {
     target.val(value);
     target.trigger('change');
