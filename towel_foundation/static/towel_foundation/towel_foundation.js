@@ -64,7 +64,7 @@ if (window.gettext === undefined) {
                 // https://github.com/amsul/pickadate.js/issues/128
                 // uhm...
                 var p = input.data('pickadate');
-                if (p.get())
+                if (p && p.get())
                     p.set('select', p.get(), {
                         format: self.data('date-format'), data: true});
             });
