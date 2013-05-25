@@ -70,7 +70,7 @@ if (window.gettext === undefined) {
             });
         }
 
-        elem.find('textarea.autogrow').autogrow();
+        elem.find('textarea.autogrow, .autogrow textarea').autogrow();
     });
 
     onReady.push(function() { initForms(); });
