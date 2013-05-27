@@ -48,25 +48,13 @@ if (window.gettext === undefined) {
     onForm.push(function(elem, $) {
         if ($.fn.chosen)
             elem.find('select').not('.plain').chosen();
-        if ($.fn.pickadate) {
+        if ($.fn.datePicker) {
             elem.find('.type-date').each(function() {
                 var self = $(this),
                     input = self.find('input.dateinput');
 
-                input.pickadate({
-                    format: self.data('date-format')
-                    , formatSubmit: self.data('date-format')
-                    , selectYears: true
-                    , selectMonths: true
-                    , data: true
-                });
-
-                // https://github.com/amsul/pickadate.js/issues/128
-                // uhm...
-                var p = input.data('pickadate');
-                if (p && p.get())
-                    p.set('select', p.get(), {
-                        format: self.data('date-format'), data: true});
+                Date.format = self.data('date-format');
+                input.datePicker();
             });
         }
 
