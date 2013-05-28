@@ -54,7 +54,14 @@ if (window.gettext === undefined) {
                     input = self.find('input.dateinput');
 
                 Date.format = self.data('date-format');
-                input.datePicker();
+                input.datePicker({
+                    horizontalPosition: $.dpConst.POS_RIGHT,
+                    displayClose: true,
+                    startDate: '01/01/1990'
+                });
+
+                var lnk = input.parent().find('.dp-choose-date');
+                lnk.html('<i class="foundicon-calendar"></i>');
             });
         }
 

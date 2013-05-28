@@ -1,7 +1,7 @@
 
 
 table.jCalendar {
-	border: 1px solid #000;
+	border: 1px solid #222;
 	background: #aaa;
     border-collapse: separate;
     border-spacing: 5px;
@@ -17,7 +17,7 @@ table.jCalendar th {
 
 table.jCalendar td {
 	background: #ccc;
-	color: #000;
+	color: #222;
 	padding: 4px 6px;
 	text-align: center;
 }
@@ -40,7 +40,7 @@ table.jCalendar td.selected.dp-hover {
 table.jCalendar td.dp-hover,
 table.jCalendar tr.activeWeekHover td {
 	background: #fff;
-	color: #000;
+	color: #222;
 }
 table.jCalendar tr.selectedWeek td {
 	background: #f66;
@@ -90,7 +90,7 @@ a#dp-close:hover {
 	text-decoration: underline;
 }
 div.dp-popup a {
-	color: #000;
+	color: #222;
 	text-decoration: none;
 	padding: 3px 2px 0;
 }
@@ -131,7 +131,12 @@ div.dp-popup td.disabled {
 }
 
 
-.dp-choose-date span:after {
-    font-family: "GeneralFoundicons";
-    content: "\f008";
+.type-date {
+    position: relative;
+}
+.dp-choose-date {
+    font-size: 16px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
 }
