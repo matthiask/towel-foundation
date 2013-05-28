@@ -8,13 +8,15 @@
 
 {% block content %}
 <form method="get" action="{{ request.get_full_path }}">
-  <div class="input-group">
-    <input type="text" value="" name="query">
-    <span class="input-group-addon">
-      <i class="glyphicon glyphicon-search"></i>
-    </span>
+  <div class="row collapse">
+    <div class="small-11 columns">
+      <input type="text" value="" name="query">
+    </div>
+    <div class="small-1 columns">
+      <button type="submit" class="button secondary">
+        <i class="foundicon-search"></i></button>
+    </div>
   </div>
-  <input type="submit" style="margin-left:-4000em">
 </form>
 {% region "picker-panel" fields="object_list" class="picker-panel" %}
   {% block objects %}

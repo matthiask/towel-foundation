@@ -7,7 +7,7 @@
 {% block page-header %}
 <div class="page-header">
   <h1>
-    {% if object %}<a href="{{ object.get_absolute_url }}">{{ title }}: {{ object }}</a>
+    {% if object %}<a href="{{ object.get_absolute_url }}">{{ title }}</a>
     {% else %}{{ title }}
     {% endif %}
   </h1>
