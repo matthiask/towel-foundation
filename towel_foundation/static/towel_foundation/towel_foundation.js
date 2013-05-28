@@ -57,7 +57,7 @@ if (window.gettext === undefined) {
                 input.datePicker({
                     horizontalPosition: $.dpConst.POS_RIGHT,
                     displayClose: true,
-                    startDate: new Date(Date.parse('1990-01-01'))
+                    startDate: new Date(1900, 1, 1)
                 });
 
                 var lnk = input.parent().find('.dp-choose-date');
