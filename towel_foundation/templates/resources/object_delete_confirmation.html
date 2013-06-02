@@ -4,9 +4,8 @@
 
 {% block title %}{{ title }} {{ object }} - {{ block.super }}{% endblock %}
 
-{% block page-header %}<div class="page-header">
-  <h1>{% blocktrans %}Delete {{ object }}{% endblocktrans %}</h1>
-</div>
+{% block page-header %}
+<h1>{% blocktrans %}Delete {{ object }}{% endblocktrans %}</h1>
 {% endblock %}
 
 {% block content %}
