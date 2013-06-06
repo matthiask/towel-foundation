@@ -12,3 +12,5 @@
 .picker-panel tr:hover th {
     background-color: #ffe52f !important;
 }
+
+.action-objects ul { margin-left: 1.25em; }

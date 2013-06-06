@@ -16,15 +16,13 @@
 {{ action_hidden_fields|safe }}
 
 <fieldset>
-  <div>
-    <label>{% trans "Items" %}</label>
-    <div>
-      <ul>
-        {% for item in action_queryset %}
-          <li>{{ item }}</li>
-        {% endfor %}
-      </ul>
-    </div>
+  <label>{% trans "Items" %}</label>
+  <div class="action-objects">
+    <ul>
+      {% for item in action_queryset %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
   </div>
   {% for field in form %}
     {% if field.is_hidden %}{{ field }}
