@@ -17,7 +17,7 @@
   <a href="#" data-dropdown="action-dropdown" class="button small dropdown">
     {% trans "Action" %}
   </a>
-  <ul class="f-dropdown" id="action-dropdown" data-dropdown-content>
+  <ul class="f-dropdown content" id="action-dropdown" data-dropdown-content>
     {% for action in batch_form.actions %}
       <li><a href="#" data-batch-action="{{ action.0 }}">{{ action.1 }}</a></li>
     {% endfor %}
