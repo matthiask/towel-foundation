@@ -1,1 +1,4 @@
-{% extends "towel_bootstrap/modal.html" %}
+<h3>{% block title %}{{ modal_title }}{% endblock %}</h3>
+{% block messages %}{% include "towel/_messages.html" %}{% endblock %}
+{% block content %}{% endblock %}
+<a class="close-reveal-modal">&#215;</a>
