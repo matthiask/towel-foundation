@@ -51,7 +51,7 @@ if (window.gettext === undefined) {
         if ($.fn.datePicker) {
             elem.find('.type-date').each(function() {
                 var self = $(this),
-                    input = self.find('input.dateinput');
+                    input = self.find('input[type=text]');
 
                 Date.format = self.data('date-format');
                 input.datePicker({
