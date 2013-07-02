@@ -1,5 +1,5 @@
 {% load i18n towel_form_tags %}
-
+{% if search_form %}
 <form id="filterform" method="get" action="{{ list_url|default:"." }}" class="form-search {{ search_form.searching }}">
   {# <a href="?clear=1" class="searching">reset</a> #}
   <input type="hidden" name="s" value="1" />
@@ -17,3 +17,4 @@
   #filterform { margin-top: 7px; }
   #id_query { width: 156px; }
 </style>
+{% endif %}
