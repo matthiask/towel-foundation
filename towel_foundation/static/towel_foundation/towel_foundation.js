@@ -113,7 +113,7 @@ if (window.gettext === undefined) {
                         if ($.fn.ajaxSubmit) {
                             // jquery.form.js is available, XHR file uploads will
                             // work too
-                            var $bar = $elem.find('.progress-bar');
+                            var $bar = $elem.find('.meter');
 
                             $(this).ajaxSubmit({
                                 uploadProgress: function(evt, pos, total, percComplete) {
