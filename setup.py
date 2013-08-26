@@ -9,7 +9,8 @@ packages, package_data = setuplib.find_packages('towel_foundation')
 setup(name='towel-foundation',
     version=__import__('towel_foundation').__version__,
     description='Keeping you DRY since 2013',
-    long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
+    long_description=open(
+        os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
     author='Matthias Kestenholz',
     author_email='mk@feinheit.ch',
     url='http://github.com/matthiask/towel-foundation/',
