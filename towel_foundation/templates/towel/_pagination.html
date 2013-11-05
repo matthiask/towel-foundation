@@ -1,19 +1,29 @@
 {% load i18n modelview_list %}
 {% if paginator.num_pages > 1 %}
 {% with context.request.GET|querystring as querystring %}
+<div class="pagination-centered">
   <ul class="pagination">
-  {% if page.has_previous %}
-    <li><a href="?{{ querystring }}&page={{ page.previous_page_number }}">&laquo;</a></li>
-  {% endif %}
-  {% for p in page.page_range|default:paginator.page_range %}
-    {% if not p %}<li>&hellip;</li>
+    {% if page.has_previous %}
+      <li class="arrow"><a href="?{{ querystring }}&page={{ page.previous_page_number }}">&laquo;</a></li>
     {% else %}
-    <li {% if p == page.number and not page.show_all_objects %}class="active"{% endif %}><a href="?{{ querystring }}&page={{ p }}">{{ p }}</a></li>
+      <li class="arrow unavailable"><a href="">&laquo;</a></li>
     {% endif %}
-  {% endfor %}
-  {% if page.has_next %}
-    <li><a href="?{{ querystring }}&page={{ page.next_page_number }}">&raquo;</a></li>
-  {% endif %}
+
+    {% for p in page.page_range|default:paginator.page_range %}
+      {% if not p %}
+        <li class="unavailable"><a href="">&hellip;</a></li>
+      {% else %}
+        <li {% if p == page.number and not page.show_all_objects %}class="current"{% endif %}>
+          <a href="?{{ querystring }}&page={{ p }}">{{ p }}</a></li>
+      {% endif %}
+    {% endfor %}
+
+    {% if page.has_next %}
+      <li class="arrow"><a href="?{{ querystring }}&page={{ page.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="arrow unavailable"><a href="">&raquo;</a></li>
+    {% endif %}
   </ul>
+</div>
 {% endwith %}
 {% endif %}
