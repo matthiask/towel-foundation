@@ -20,7 +20,7 @@
 </form>
 {% region "picker-panel" fields="object_list" class="picker-panel" %}
   {% block objects %}
-  <table class="table table-striped" data-reveal-class="medium">
+  <table class="objects" data-reveal-class="medium">
   {% for object in object_list %}
     <tr data-value="{{ object.pk }}" data-text="{{ object }}">
       <th>{{ object }}</th>
