@@ -182,6 +182,9 @@ if (window.gettext === undefined) {
 
     $(document.body).on('click', 'a[data-toggle="ajaxmodal"]', function(e) {
         e.preventDefault();
+        // close everything related to reveal -- is necessary because
+        // otherwise foundation.reveal.js trips and falls.
+        $('.reveal-modal, .reveal-modal-bg').remove();
         modalLoad(this.href, $(this).data('reveal-class'));
     });
 
