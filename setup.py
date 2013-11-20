@@ -23,6 +23,7 @@ setup(
         '': ['*.html', '*.txt'],
         'towel_foundation': [
             'locale/*/*/*.*',
+            'static/chosen/*',
             'static/towel_foundation/*.*',
             'static/towel_foundation/*/*.*',
             'templates/*.*',
