@@ -4,6 +4,8 @@ from django.db.models import ObjectDoesNotExist
 from django.db.models.fields import BLANK_CHOICE_DASH
 from django.utils.safestring import mark_safe
 
+from towel.utils import app_model_label
+
 
 _PICKER_TEMPLATE = u'''
 <div class="picker-widget">
@@ -37,8 +39,7 @@ class SelectWithPicker(forms.Select):
         html = super(SelectWithPicker, self).render(name, value, attrs=attrs,
             choices=choices)
 
-        opts = self.model._meta
-        picker = reverse('%s_%s_picker' % (opts.app_label, opts.module_name))
+        picker = reverse('%s_%s_picker' % app_model_label(self.model))
 
         return mark_safe(_PICKER_TEMPLATE % {
             'select': html,

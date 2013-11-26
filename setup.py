@@ -34,7 +34,7 @@ setup(
     },
     install_requires=[
         'Django>=1.4.2',
-        'towel>=0.2.0',
+        'towel>=0.3.0',
     ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
