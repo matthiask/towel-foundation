@@ -1,7 +1,7 @@
 <a class="ordering"
   href="{{ base_url }}?{{ querystring }}&o={{ descending|yesno:"-," }}{{ field }}">
   {% if used %}
-    <i class="foundicon-{{ descending|yesno:"down,up" }}-arrow"></i>
+    <i class="fi-arrow-{{ descending|yesno:"down,up" }}-arrow"></i>
   {% endif %}
   {{ title|default:field }}
 </a>

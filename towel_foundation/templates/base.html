@@ -52,22 +52,22 @@
               </a>
               <ul class="dropdown">
                 <li><a href="{{ user.get_absolute_url }}">
-                  <i class="foundicon-smiley"></i> {% trans "Account" %}</a></li>
+                  <i class="fi-torso"></i> {% trans "Account" %}</a></li>
                 <li><a href="{% url 'password_change' %}">
-                  <i class="foundicon-lock"></i>
+                  <i class="fi-lock"></i>
                   {% trans "Change my password" %}</a></li>
                 {% if request.access.access >= MANAGEMENT %}
                   <li class="divider"></li>
                   <li><a href="{% url 'contacts_group_list' %}">
-                    <i class="foundicon-address-book"></i>
+                    <i class="fi-address-book"></i>
                     {% trans "Contact groups" %}</a></li>
                   <li><a href="{{ request.access.client.urls.detail }}">
-                    <i class="foundicon-settings"></i>
+                    <i class="fi-widget"></i>
                     {% trans "Configuration" %}</a></li>
                 {% endif %}
                 <li class="divider"></li>
                 <li><a href="{% url 'logout' %}">
-                  <i class="foundicon-error"></i>
+                  <i class="fi-power"></i>
                   Sign Out</a></li>
               </ul>
             </li>

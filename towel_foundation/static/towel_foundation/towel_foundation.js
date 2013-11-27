@@ -61,7 +61,7 @@ if (window.gettext === undefined) {
                 });
 
                 var lnk = input.parent().find('.dp-choose-date');
-                lnk.html('<i class="foundicon-calendar"></i>');
+                lnk.html('<i class="fi-calendar"></i>');
             });
         }
 

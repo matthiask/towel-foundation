@@ -11,7 +11,7 @@ _PICKER_TEMPLATE = u'''
 <div class="picker-widget">
     <a href="%(picker)s?field=%(field)s" class="picker-glass"
             data-toggle="ajaxmodal">
-        <i class="foundicon-search"></i>
+        <i class="fi-magnifying-glass"></i>
     </a>
     <div class="picker-select">
         %(select)s
