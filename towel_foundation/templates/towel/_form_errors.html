@@ -1,27 +1,20 @@
 {% load i18n verbose_name_tags %}
-{% if has_non_field_errors %}
-<div class="form-errors alert alert-box alert-block alert-error fade in">
-  <a class="close" data-dismiss="alert" href="#">&times;</a>
+<div class="form-errors alert-box alert" data-alert>
+  <a class="close" href="#">&times;</a>
 
-  <h4 class="alert-heading">
-    {% trans "Please correct the following form errors:" %}
-  </h4>
+  <strong>{% trans "Please correct the errors below." %}</strong>
 
   {% for form in forms %}
-    {% if form.non_field_errors %}
-      {% for error in form.non_field_errors %}{{ error }}<br>{% endfor %}
-    {% endif %}
+    {{ form.non_field_errors }}
+    {{ form.non_field_errors }}
   {% endfor %}
 
   {% for formset in formsets %}
-    {% if formset.non_field_errors %}
-      {% for error in formset.non_field_errors %}{{ error }}<br>{% endfor %}
-    {% endif %}
+    {% for error in formset.non_field_errors %}
+      {{ formset.non_field_errors }}
+    {% endfor %}
     {% for form in formset %}
-      {% if form.non_field_errors %}
-        {% for error in form.non_field_errors %}{{ error }}<br>{% endfor %}
-      {% endif %}
+      {% for error in form.non_field_errors %}<br>{{ error }}{% endfor %}
     {% endfor %}
   {% endfor %}
 </div>
-{% endif %}

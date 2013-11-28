@@ -1,9 +1,10 @@
 {% load i18n verbose_name_tags %}
-<div class="form-errors alert alert-block">
-  <a class="close" data-dismiss="alert" href="#">&times;</a>
-  <h4 class="alert-heading">{% trans "Please review the following warnings:" %}</h4>
+<div class="form-errors alert-box warning" data-alert>
+  <a class="close" href="#">&times;</a>
 
-  <ul>
+  <strong>{% trans "Please review the warnings below." %}</strong>
+
+  <ul class="errorlist">
   {% for form in forms %}
     {% for warning in form.warnings %}
       <li>{{ warning }}</li>
