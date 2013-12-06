@@ -61,7 +61,12 @@ if (window.gettext === undefined) {
                 });
 
                 var lnk = input.parent().find('.dp-choose-date');
+                input.wrap(
+                    '<div class="row collapse"><div class="small-10 columns"/></div>');
+                lnk.addClass('button secondary postfix');
                 lnk.html('<i class="fi-calendar"></i>');
+                lnk.wrap('<div class="small-2 columns"/>');
+                lnk.parent().insertAfter(input.parent());
             });
         }
 

@@ -129,14 +129,3 @@ div.dp-popup td {
 div.dp-popup td.disabled {
 	cursor: default;
 }
-
-
-.type-date {
-    position: relative;
-}
-.dp-choose-date {
-    font-size: 16px;
-    position: absolute;
-    right: 5px;
-    bottom: 5px;
-}
