@@ -2,6 +2,7 @@ from django import forms
 from django.core.urlresolvers import reverse
 from django.db.models import ObjectDoesNotExist
 from django.db.models.fields import BLANK_CHOICE_DASH
+from django.utils.encoding import force_text
 from django.utils.safestring import mark_safe
 
 from towel.utils import app_model_label
@@ -27,7 +28,7 @@ class SelectWithPicker(forms.Select):
         super(SelectWithPicker, self).__init__(*args, **kwargs)
 
     def render(self, name, value, attrs=None, choices=()):
-        choices = BLANK_CHOICE_DASH + [(item.id, unicode(item)) for item in
+        choices = BLANK_CHOICE_DASH + [(item.id, force_text(item)) for item in
             self.model.objects.active_set(
                 self.request.access,
                 additional_ids=filter(None, [
@@ -111,7 +112,7 @@ class APIAutocompletionWidget(forms.TextInput):
 
         if value:
             try:
-                value_text = unicode(self.choices.queryset.get(pk=value))
+                value_text = force_text(self.choices.queryset.get(pk=value))
             except (ObjectDoesNotExist, TypeError, ValueError):
                 pass
 
