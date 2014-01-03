@@ -28,17 +28,17 @@ class SelectWithPicker(forms.Select):
         super(SelectWithPicker, self).__init__(*args, **kwargs)
 
     def render(self, name, value, attrs=None, choices=()):
-        choices = BLANK_CHOICE_DASH + [(item.id, force_text(item)) for item in
-            self.model.objects.active_set(
-                self.request.access,
-                additional_ids=filter(None, [
-                    value,
-                    self.request.REQUEST.get(name),
-                    ]),
-                )]
+        active_set = self.model.objects.active_set(
+            self.request.access,
+            additional_ids=filter(
+                None, [value, self.request.REQUEST.get(name)]),
+        )
 
-        html = super(SelectWithPicker, self).render(name, value, attrs=attrs,
-            choices=choices)
+        choices = BLANK_CHOICE_DASH + [
+            (item.id, force_text(item)) for item in active_set]
+
+        html = super(SelectWithPicker, self).render(
+            name, value, attrs=attrs, choices=choices)
 
         picker = reverse('%s_%s_picker' % app_model_label(self.model))
 
