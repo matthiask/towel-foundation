@@ -30,15 +30,18 @@ class SelectWithPicker(forms.Select):
     def render(self, name, value, attrs=None, choices=()):
         active_set = self.model.objects.active_set(
             self.request.access,
-            additional_ids=filter(
-                None, [value, self.request.REQUEST.get(name)]),
+            additional_ids=filter(None, [
+                value,
+                self.request.POST.get(name),
+                self.request.GET.get(name),
+            ]),
         )
 
-        choices = BLANK_CHOICE_DASH + [
+        self.choices = BLANK_CHOICE_DASH + [
             (item.id, force_text(item)) for item in active_set]
 
         html = super(SelectWithPicker, self).render(
-            name, value, attrs=attrs, choices=choices)
+            name, value, attrs=attrs, choices=self.choices)
 
         picker = reverse('%s_%s_picker' % app_model_label(self.model))
 
