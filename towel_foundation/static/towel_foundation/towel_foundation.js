@@ -151,8 +151,9 @@ if (window.gettext === undefined) {
             var modal = $('div.reveal-modal');
             if (!modal.length) {
                 /* create div for holding AJAX-loaded modals, once */
-                modal = $('<div>').addClass('reveal-modal').appendTo('body');
+                modal = $('<div data-reveal class="reveal-modal"/>').appendTo('body');
                 modal.on('close', function(event) {
+
                     if (event.target != this) {
                         // another element triggered the hide event. Ignore it.
                         return true;
