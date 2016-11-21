@@ -41,7 +41,7 @@ class SelectWithPicker(forms.Select):
             (item.id, force_text(item)) for item in active_set]
 
         html = super(SelectWithPicker, self).render(
-            name, value, attrs=attrs, choices=self.choices)
+            name, value, attrs=attrs)
 
         picker = reverse('%s_%s_picker' % app_model_label(self.model))
 
