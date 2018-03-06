@@ -1,9 +1,12 @@
 from django import forms
-from django.core.urlresolvers import reverse
 from django.db.models import ObjectDoesNotExist
 from django.db.models.fields import BLANK_CHOICE_DASH
 from django.utils.encoding import force_text
 from django.utils.safestring import mark_safe
+try:
+    from django.urls import reverse
+except ImportError:
+    from django.core.urlresolvers import reverse
 
 from towel.utils import app_model_label
 
