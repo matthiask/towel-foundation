@@ -110,9 +110,9 @@ class APIAutocompletionWidget(forms.TextInput):
         self.url = kwargs.pop('url')
         super(APIAutocompletionWidget, self).__init__(*args, **kwargs)
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, **kwargs):
         hidden = super(APIAutocompletionWidget, self).render(
-            name, value, attrs=dict(attrs, type='hidden'))
+            name, value, attrs=dict(attrs, type='hidden'), **kwargs)
         id_attr = attrs['id']
         value_text = ''
 
