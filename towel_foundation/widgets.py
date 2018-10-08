@@ -30,7 +30,7 @@ class SelectWithPicker(forms.Select):
         self.request = kwargs.pop('request')
         super(SelectWithPicker, self).__init__(*args, **kwargs)
 
-    def render(self, name, value, attrs=None, choices=()):
+    def render(self, name, value, attrs=None, **kwargs):
         active_set = self.model.objects.active_set(
             self.request.access,
             additional_ids=filter(None, [
@@ -44,7 +44,7 @@ class SelectWithPicker(forms.Select):
             (item.id, force_text(item)) for item in active_set]
 
         html = super(SelectWithPicker, self).render(
-            name, value, attrs=attrs)
+            name, value, attrs=attrs, **kwargs)
 
         picker = reverse('%s_%s_picker' % app_model_label(self.model))
 
