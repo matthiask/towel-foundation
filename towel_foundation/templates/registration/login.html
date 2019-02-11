@@ -13,7 +13,7 @@
       {% csrf_token %}
       {% form_errors form %}
       {% for field in form %}{% form_item field %}{% endfor %}
-
+      <input type="hidden" name="next" value="{{ next }}" />
       <button type="submit" class="button">{% trans "Sign in" %}</button>
     </form>
   </div>
