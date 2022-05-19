@@ -1,16 +1,23 @@
-.picker-widget > .picker-glass { float: right; line-height: 2; }
-.picker-widget > .picker-select { margin-right: 1.5em; }
+.picker-widget > .picker-glass {
+  float: right;
+  line-height: 2;
+}
+.picker-widget > .picker-select {
+  margin-right: 1.5em;
+}
 .picker-panel {
-    height: 400px;
-    overflow-y: scroll;
-    width: 100%;
+  height: 400px;
+  overflow-y: scroll;
+  width: 100%;
 }
 .picker-panel tr {
-    cursor: pointer;
+  cursor: pointer;
 }
 .picker-panel tr:hover td,
 .picker-panel tr:hover th {
-    background-color: #ffe52f !important;
+  background-color: #ffe52f !important;
 }
 
-.action-objects ul { margin-left: 1.25em; }
+.action-objects ul {
+  margin-left: 1.25em;
+}
